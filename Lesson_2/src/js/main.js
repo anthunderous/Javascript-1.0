@@ -1,32 +1,19 @@
 /*jshint esversion: 6 */
 var
-  budget = +prompt("Какой ваш бюджет?", -100500),
-  shopName = prompt("Какое название вашего магазина?", "Петя и партнёры"),
+  budget    = +prompt("Какой ваш бюджет?", -100500),
+  name      = prompt("Какое название вашего магазина?", "Петя и партнёры"),
   shopGoods = [],
-  mainList = {
+  mainList  = {
     mlBudget: budget,
-    mlName: shopName,
-    mlShopGoods: shopGoods,
-    mlEmployers: {},
+    mlName: name,
+    mlShopGoods: shopGoods = [],
+    mlEmployers: employers = {},
     open: true
   };
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 3; i++) {
   shopGoods[i] = prompt("Какой тип товара будем продавать?", "Который мама посоветует");
 }
-// let i = 0;
-// while (i < 5){
-//   shopGoods[i] = prompt("Какой тип товара будем продавать?", "Который мама посоветует");
-//   i++;
-// }
-
-// i = 0;
-// do{
-//   shopGoods[i] = prompt("Какой тип товара будем продавать?", "Который мама посоветует");
-//   i++;
-// }
-// while (i < 5)
-
 alert("Это ваш бюджет на день = " + budget / 30);
 
 
