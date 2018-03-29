@@ -5,47 +5,32 @@ var
   shopGoods = [],
   mainList = {
     mlBudget: budget,
-    mlName: shopName,
+    mlName: name,
     mlShopGoods: shopGoods,
     mlEmployers: {},
     open: true
   };
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 3; i++) {
   shopGoods[i] = prompt("Какой тип товара будем продавать?", "Который мама посоветует");
 }
-// let i = 0;
-// while (i < 5){
-//   shopGoods[i] = prompt("Какой тип товара будем продавать?", "Который мама посоветует");
-//   i++;
-// }
-
-// i = 0;
-// do{
-//   shopGoods[i] = prompt("Какой тип товара будем продавать?", "Который мама посоветует");
-//   i++;
-// }
-// while (i < 5)
-
 alert("Это ваш бюджет на день = " + budget / 30);
 
 
 //Debug
 console.log("Budget = " + budget);
 console.log("Name = " + name);
-for (let i = 0; i < 3; i++){
-  console.log((i+1) + " shopGoods' element = " + shopGoods[i]);
+for (let i = 0; i < 3; i++) {
+  console.log((i + 1) + " shopGoods' element = " + shopGoods[i]);
 }
 
 console.log('');
 console.log("mlBudget = " + mainList.mlBudget);
 console.log("mlName = " + mainList.mlName);
-for (let i = 0; i < 3; i++){
-  console.log((i+1) + " mlShopGoods' element = " + mainList.mlShopGoods[i]);
+for (let i = 0; i < 3; i++) {
+  console.log((i + 1) + " mlShopGoods' element = " + mainList.mlShopGoods[i]);
 }
-for (let i = 0; i < 3; i++){
-  console.log((i+1) + " mlEmployers' element = " + mainList.mlEmployers[i]);
+for (let i = 0; i < 3; i++) {
+  console.log((i + 1) + " mlEmployers' element = " + mainList.mlEmployers[i]);
 }
 console.log("mlOpen = " + mainList.open);
-
-
