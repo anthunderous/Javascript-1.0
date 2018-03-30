@@ -14,10 +14,9 @@ let
   };
 
 function start() {
-  budget = +prompt("Ваш бюджет?");
+  mainList.mlBudget = budget = +prompt("Ваш бюджет?");
   while (isNaN(budget) || budget == "" || budget == null) {
     alert("Вы не ввели данные");
-    mainList.mlBudget = budget = +prompt("Ваш бюджет?");
   }
   mainList.mlName = shopName = prompt("Название вашего магазина?").toUpperCase();
 };
