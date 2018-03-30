@@ -10,7 +10,7 @@ let
     mlShopGoods: [],
     mlEmployers: {},
     open: true,
-    discount: екгу
+    discount: true
   };
 
 function start() {
