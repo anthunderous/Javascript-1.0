@@ -17,9 +17,9 @@ function start() {
   budget = +prompt("Ваш бюджет?");
   while (isNaN(budget) || budget == "" || budget == null) {
     alert("Вы не ввели данные");
-    budget = +prompt("Ваш бюджет?");
+    mainList.mlBudget = budget = +prompt("Ваш бюджет?");
   }
-  shopName = prompt("Название вашего магазина?").toUpperCase();
+  mainList.mlName = shopName = prompt("Название вашего магазина?").toUpperCase();
 };
 
 function chooseGoods() {
