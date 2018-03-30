@@ -80,4 +80,6 @@ let
       }
     }
   };
+  mainList.start();
+  mainList.chooseShopItems();
 console.log(mainList);
