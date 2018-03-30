@@ -12,33 +12,35 @@ mainList = {
   open: true
 };
 
-for (let i = 0; i < 5; i++) {
-  let typeProducts = prompt("Какой тип товара будем продавать?", "Который мама посоветует");
-
-  if (((typeof (typeProducts)) === 'string') && ((typeof (typeProducts)) !== null) && (typeProducts !== '') && (typeProducts.length <= 50)) {
-    shopGoods[i] = typeProducts;
-  } else {
-    alert("Вы не заполнили поле или ввели больше 50 символов")
-    i--;
-  }
-}
-
-// let i = 0;
-// while (i < 5){
+// for (let i = 0; i < 5; i++) {
 //   let typeProducts = prompt("Какой тип товара будем продавать?", "Который мама посоветует");
-// if (((typeof (typeProducts)) === 'string') && ((typeof (typeProducts)) !== null) && (typeProducts !== '') && (typeProducts.length <= 50)) {
-//   shopGoods[i] = typeProducts;
-// } else {
-//   alert("Вы не заполнили поле или ввели больше 50 символов")
-//   i--;
+
+//   if (((typeof (typeProducts)) === 'string') && ((typeof (typeProducts)) !== null) && (typeProducts !== '') && (typeProducts.length <= 50)) {
+//     shopGoods[i] = typeProducts;
+//   } else {
+//     alert("Вы не заполнили поле или ввели больше 50 символов")
+//     i--;
+//   }
 // }
-// }
+
+let i = 0;
+while (i < 5){
+  let typeProducts = prompt("Какой тип товара будем продавать?", "Который мама посоветует");
+if (((typeof (typeProducts)) === 'string') && ((typeof (typeProducts)) !== null) && (typeProducts !== '') && (typeProducts.length <= 50)) {
+  shopGoods[i] = typeProducts;
+  i++;
+} else {
+  alert("Вы не заполнили поле или ввели больше 50 символов")
+  i--;
+}
+}
 
 // let i = 0;
 // do{
 //  let typeProducts = prompt("Какой тип товара будем продавать?", "Который мама посоветует");
 // if (((typeof (typeProducts)) === 'string') && ((typeof (typeProducts)) !== null) && (typeProducts !== '') && (typeProducts.length <= 50)) {
 //   shopGoods[i] = typeProducts;
+//   i++;
 // } else {
 //   alert("Вы не заполнили поле или ввели больше 50 символов")
 //   i--;
