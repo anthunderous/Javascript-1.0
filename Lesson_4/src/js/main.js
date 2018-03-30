@@ -59,15 +59,21 @@ let
         }
       }
     },
-    chooseShopItems: function chooseShopItems(){
-      let items = prompt("Перечислите через запятую ваши товары","");
-      
-      if (((typeof (items)) === 'string') && ((typeof (items)) !== null) && (items !== '')){
-        mainList.shopItems=items.split(",");
-        mainList.shopItems=items.push(prompt("Подождите, ещё ", ""));
-        mainList.shopItems=items.sort();
-      }
+    chooseShopItems: function chooseShopItems() {
+      let items = prompt("Перечислите через запятую ваши товары", "");
 
-    },
+      if (((typeof (items)) === 'string') && ((typeof (items)) !== null) && (items !== '')) {
+        mainList.shopItems = items.split(",");
+        mainList.shopItems.push(prompt("Подождите, ещё ", ""));
+        mainList.shopItems.sort();
+      }
+      document.write("У нас вы можете купить: <br>");
+      mainList.shopItems.forEach(function (item, i, arr) {
+        document.write("  - " + (i + 1) + " - " + item + "<br>");
+      });
+      for (let key in mainList) {
+        console.log("Наш магазин включает в себя: " + key);
+      }
+    }
   };
 console.log(mainList);
