@@ -89,3 +89,4 @@ let
   };
 mainList.chooseShopItems();
 console.log(mainList);
+
