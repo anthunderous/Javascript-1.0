@@ -3,6 +3,7 @@ let
   openBtn = document.getElementById('open-btn'),
   mainInfo = document.getElementsByClassName('main-info')[0],
   leftMenu = mainInfo.getElementsByTagName('div'),
+  //Мне кажется более рациональное решение, нежели вариант с перечеслением всех классов - они же разные все)
   goodItem = document.getElementsByClassName('goods-item'),
   mainFunctions = document.getElementsByClassName('main-functions')[0],
   btnTag = mainFunctions.getElementsByTagName('button'),
