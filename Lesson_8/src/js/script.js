@@ -98,7 +98,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if(target.classList.contains('contacts')){
         to = document.getElementById('contacts');
       }
-      scrollTo(element, to.offsetTop-60, 100);
+      scrollTo(element, to.offsetTop-60, 1000);
 
     });
   

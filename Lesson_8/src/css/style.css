@@ -1,6 +1,4 @@
-*{
-  scroll-behavior:smooth;
-}
+
 .fade {
   -webkit-animation-name: fade;
           animation-name: fade;
