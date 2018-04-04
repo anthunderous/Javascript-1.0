@@ -34,6 +34,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+//Timer
   let deadline = '2018-04-07';
 
   function getTimeRemaining(endtime) {
@@ -60,10 +61,21 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function updateClock() {
       let t = getTimeRemaining(endtime);
-      hours.innerHTML = t.hours;
-      minutes.innerHTML = t.minutes;
-      seconds.innerHTML = t.seconds;
-
+      if (t.hours < 10) {
+        hours.innerHTML = '0' + t.hours;
+      } else {
+        hours.innerHTML = t.hours;
+      }
+      if (t.minutes < 10) {
+        minutes.innerHTML = '0' + t.minutes;
+      } else {
+        minutes.innerHTML = t.minutes;
+      }
+      if (t.seconds < 10) {
+        seconds.innerHTML = '0' + t.seconds;
+      } else {
+        seconds.innerHTML = t.seconds;
+      }
       if (t.total <= 0) {
         hours.innerHTML = '00';
         minutes.innerHTML = '00';
@@ -77,39 +89,39 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   setClock('timer', deadline);
 
-
+//Smooth scroll
   let
     mainMenu = document.getElementsByTagName('nav')[0];
-    mainMenu.addEventListener('click', function(event){
-      let 
+  mainMenu.addEventListener('click', function (event) {
+    let
       to,
-      element=document.documentElement,
+      element = document.documentElement,
       target = event.target;
 
-      if(target.classList.contains('about')){
-        to = document.getElementById('about');
-      }
-      if(target.classList.contains('photo')){
-        to = document.getElementById('photo');
-      }
-      if(target.classList.contains('price')){
-        to = document.getElementById('price');
-      }
-      if(target.classList.contains('contacts')){
-        to = document.getElementById('contacts');
-      }
-      scrollTo(element, to.offsetTop-60, 1000);
+    if (target.classList.contains('about')) {
+      to = document.getElementById('about');
+    }
+    if (target.classList.contains('photo')) {
+      to = document.getElementById('photo');
+    }
+    if (target.classList.contains('price')) {
+      to = document.getElementById('price');
+    }
+    if (target.classList.contains('contacts')) {
+      to = document.getElementById('contacts');
+    }
+    scrollTo(element, to.offsetTop - 60, 1000);
 
-    });
-  
+  });
+
   function scrollTo(element, to, duration) {
     if (duration <= 0) return;
     var difference = to - element.scrollTop;
     var perTick = difference / duration * 10;
-    setTimeout(function() {
-        element.scrollTop = element.scrollTop + perTick;
-        if (element.scrollTop === to) return;
-        scrollTo(element, to, duration - 10);
+    setTimeout(function () {
+      element.scrollTop = element.scrollTop + perTick;
+      if (element.scrollTop === to) return;
+      scrollTo(element, to, duration - 10);
     }, 10);
-}
+  }
 });
