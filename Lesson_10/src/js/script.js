@@ -181,16 +181,15 @@ class options {
     let div = document.createElement('div');
     document.body.appendChild(div);
     div.style.cssText =
-      'height: ' + this.height + ';\
-       width: ' + this.width + ';\
-       background: ' + this.bg + ';\
-       font-size: ' + this.fontSize + ';\
-       text-align: ' + this.textAlign + ';\
-      ';
+      `height: ${this.height};\
+       width: ${this.width};\
+       background: ${this.bg};\
+       font-size: ${this.fontSize};\
+       text-align: ${this.textAlign};\
+      `;
       div.innerHTML = 'May Inglish iz veri gud';
   }
 }
 
 const newElement = new options('200px', '200px', 'red', '25px', 'center');
 newElement.createDiv();
-console.log(newElement);
