@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
 
   let
     tab = document.getElementsByClassName('info-header-tab'),
@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  info.addEventListener('click', function (event) {
+  info.addEventListener('click', (event) => {
     let target = event.target;
     if (target.className == 'info-header-tab') {
       for (let i = 0; i < tab.length; i++) {
@@ -93,7 +93,7 @@ window.addEventListener('DOMContentLoaded', function () {
   //Smooth scroll
   let
     mainMenu = document.getElementsByTagName('nav')[0];
-  mainMenu.addEventListener('click', function (event) {
+  mainMenu.addEventListener('click', (event) => {
     let
       to,
       element = document.documentElement,
@@ -117,9 +117,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function scrollTo(element, to, duration) {
     if (duration <= 0) return;
-    var difference = to - element.scrollTop;
-    var perTick = difference / duration * 10;
-    setTimeout(function () {
+    let difference = to - element.scrollTop;
+    let perTick = difference / duration * 10;
+    setTimeout(() => {
       element.scrollTop = element.scrollTop + perTick;
       if (element.scrollTop === to) return;
       scrollTo(element, to, duration - 10);
@@ -127,43 +127,43 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
 
-let more = document.querySelector('.more'),
-  overlay = document.querySelector('.overlay'),
-  popup = document.querySelector('.popup'),
-  moreTab = document.querySelector('.description-btn'),
-  close = document.querySelector('.popup-close');
+  let more = document.querySelector('.more'),
+    overlay = document.querySelector('.overlay'),
+    popup = document.querySelector('.popup'),
+    moreTab = document.querySelector('.description-btn'),
+    close = document.querySelector('.popup-close');
 
-more.addEventListener('click', function () {
+  more.addEventListener('click', () => {
 
-  showModal();
-  
-});
+    showModal();
 
-moreTab.addEventListener('click', function () {
+  });
 
-  showModal(event.target);
-  
-});
+  moreTab.addEventListener('click', () => {
 
-close.addEventListener('click', function () {
-  closeModal();
-});
+    showModal(event.target);
 
-function showModal() {
-  popup.classList.remove('myAnimationExit');
-  popup.classList.add('myAnimation');
-  more.classList.add('more-splash');
-  overlay.style.display = 'block';
-  document.body.style.overflow = 'hidden';
-}
+  });
 
-function closeModal() {
-  popup.classList.remove('myAnimation');
-  popup.classList.add('myAnimationExit');
-  setTimeout(function(){
-    overlay.style.display = 'none';
-  }, 1000);
-  more.classList.remove('more-splash');
-  document.body.style.overflow = '';
-}
+  close.addEventListener('click', () => {
+    closeModal();
+  });
+
+  function showModal() {
+    popup.classList.remove('myAnimationExit');
+    popup.classList.add('myAnimation');
+    more.classList.add('more-splash');
+    overlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    popup.classList.remove('myAnimation');
+    popup.classList.add('myAnimationExit');
+    setTimeout(function () {
+      overlay.style.display = 'none';
+    }, 1000);
+    more.classList.remove('more-splash');
+    document.body.style.overflow = '';
+  }
 });
