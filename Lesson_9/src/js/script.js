@@ -163,9 +163,8 @@ let info2 = document.querySelector('.info');
     popup.classList.remove('myAnimation');
     popup.classList.add('myAnimationExit');
     more.classList.remove('more-splash');
-    // setTimeout( ()=> {
-      overlay.style.display = 'none';
-    // }, 1000);
+    // setTimeout( ()=> {}, 1000);
+    overlay.style.display = 'none';
     document.body.style.overflow = '';
   }
 });

@@ -160,9 +160,9 @@ window.addEventListener('DOMContentLoaded', () => {
   function closeModal() {
     popup.classList.remove('myAnimation');
     popup.classList.add('myAnimationExit');
-    setTimeout(function () {
+    // setTimeout(function () {
       overlay.style.display = 'none';
-    }, 1000);
+    // }, 1000);
     more.classList.remove('more-splash');
     document.body.style.overflow = '';
   }
@@ -170,7 +170,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 //Lesson 10
 class options {
-  constructor(height, width, bg, fontSize, textAlign) {
+  constructor(height = '100px', width = '100px', bg = 'yellow', fontSize = '10px', textAlign = 'justify') {
     this.height = height;
     this.width = width;
     this.bg = bg;
@@ -191,5 +191,7 @@ class options {
   }
 }
 
-const newElement = new options('200px', '200px', 'red', '25px', 'center');
+const newElement = new options(
+  // '200px', '200px', 'red', '25px', 'center'
+);
 newElement.createDiv();
