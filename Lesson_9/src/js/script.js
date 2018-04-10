@@ -138,10 +138,12 @@ window.addEventListener('DOMContentLoaded', () => {
     showModal();
 
   });
-
-  moreTab.addEventListener('click', () => {
-
-    showModal(event.target);
+let info2 = document.querySelector('.info');
+  info2.addEventListener('click', (event) => {
+    let target = event.target;
+    console.log(target.className);
+    if (target.className == 'description-btn')
+      showModal();
 
   });
 
@@ -160,10 +162,10 @@ window.addEventListener('DOMContentLoaded', () => {
   function closeModal() {
     popup.classList.remove('myAnimation');
     popup.classList.add('myAnimationExit');
-    setTimeout(function () {
-      overlay.style.display = 'none';
-    }, 1000);
     more.classList.remove('more-splash');
+    // setTimeout( ()=> {
+      overlay.style.display = 'none';
+    // }, 1000);
     document.body.style.overflow = '';
   }
 });
