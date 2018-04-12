@@ -139,9 +139,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
   });
 
-  moreTab.addEventListener('click', () => {
-
-    showModal(event.target);
+  let info2 = document.querySelector('.info');
+  info2.addEventListener('click', (event) => {
+    let target = event.target;
+    console.log(target.className);
+    if (target.className == 'description-btn')
+      showModal();
 
   });
 
