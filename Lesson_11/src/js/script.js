@@ -246,9 +246,11 @@ window.addEventListener('DOMContentLoaded', () => {
           statusMessage.innerHTML = '<i class="fas fa-times" style="color: red;"></i>';
         }
       }
-    };
+    };  
     for (let i = 0; i < input.length; i++) {
       input[i].value = '';
     }
   }
 });
+
+
