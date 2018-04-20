@@ -48,7 +48,6 @@ window.addEventListener('DOMContentLoaded', () => {
       myCandidateBlock.querySelector('.views').textContent = this.politViews;
       myCandidateBlock.querySelector('.bio').textContent = this.biography;
       mainCardsItem[0].parentNode.insertBefore(myCandidateBlock, mainCardsItem[0]);
-
     }
   }
 
@@ -174,38 +173,44 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   readyBtn.addEventListener('click', () => {
-
-    if (nameCustom.value == '' || ageCustom.value == '' || ageCustom.value < 18 || bio.value == '' || isNaN(ageCustom.value)) {
-      alert('Вы не верно ввели данные');
+    resultCount = document.querySelectorAll('.result-count');
+    progressBar = document.querySelectorAll('.progress-bar');
+    if (nameCustom.value == '' || ageCustom.value == '' || bio.value == '') {
+      alert('Вы заполнили не все поля');
       return;
     } else {
-      custom.style.display = 'none';
-      main.style.display = 'block';
-      myCandidate = new Candidate(
-        nameCustom.value,
-        ageCustom.value,
-        sex.value,
-        select.options[select.selectedIndex].value,
-        bio.value,
-        personSkin,
-        personHair,
-        personClothes);
+      if (ageCustom.value < 18 || ageCustom.value > 100 || isNaN(ageCustom.value)) {
+        alert('Вы ввели некорректный возраст');
+        return;
+      } else {
+        custom.style.display = 'none';
+        main.style.display = 'block';
+        myCandidate = new Candidate(
+          nameCustom.value,
+          ageCustom.value + ' лет',
+          sex.value,
+          select.options[select.selectedIndex].value,
+          bio.value,
+          personSkin,
+          personHair,
+          personClothes);
 
-      for (let i = 0; i < resultCount.length; i++) {
-        resultCount[i].textContent = '0%';
-        progressBar[i].style.height = '0';
-        mainCardsItem[i].classList.remove('main-cards-item-active');
+        for (let i = 0; i < resultCount.length; i++) {
+          resultCount[i].textContent = '0%';
+          progressBar[i].style.height = '0';
+          mainCardsItem[i].classList.remove('main-cards-item-active');
+        }
+        myCandidate.createCandidate();
+        let
+          mainPerson = document.querySelector('.candidate-block'),
+          tempNode = mainPerson.querySelector('.photo'),
+          customPerson = document.querySelectorAll('.person')[0].cloneNode(true);
+        mainPerson.removeChild(tempNode);
+        mainPerson.insertBefore(customPerson, mainPerson.querySelector('.result'));
+        mainPerson.querySelector('.person').style.marginRight = '25px';
       }
-      myCandidate.createCandidate();
     }
-    let
-    mainPerson = document.getElementsByClassName('candidate-block')[0],
-    temp = mainPerson.querySelector('.photo'),
-    customPerson = document.getElementsByClassName('person')[0];
-    resultCount = document.querySelectorAll('.result-count');
-    mainPerson.removeChild(temp);
-    mainPerson.insertBefore(customPerson, mainPerson.querySelector('.result'));
-    mainPerson.querySelector('.person').style.marginRight = '25px';
+
   });
 
   resetBtn.addEventListener('click', () => {
@@ -213,14 +218,16 @@ window.addEventListener('DOMContentLoaded', () => {
     custom.style.display = 'flex';
     main.style.display = 'none';
     nameCustom.value = '';
+    genderRadioBtn.querySelector('#male').checked = true;
     ageCustom.value = '';
-    genderRadioBtn.querySelector('#female').removeAttribute('checked');
-    genderRadioBtn.querySelector('#male').setAttribute('checked', 'checked');
     select.selectedIndex = 0;
     bio.value = '';
+    gender=1;
     refresh();
     if (mainCardsItem.length > 2)
       mainCardsItem[0].parentNode.removeChild(mainCardsItem[0]);
+    mainCardsItem = mainCards.querySelectorAll('.main-cards-item');
+
   });
 
   skinSlider = new slider(
@@ -229,21 +236,18 @@ window.addEventListener('DOMContentLoaded', () => {
     skinSlider.querySelector('.prev'),
     skinSlider.querySelector('.next')
   );
-
   hairSlider = new slider(
     hairSlider,
     hairSlider.querySelectorAll('.hair-style'),
     hairSlider.querySelector('.prev'),
     hairSlider.querySelector('.next')
   );
-
   clothesSlider = new slider(
     clothesSlider,
     clothesSlider.querySelectorAll('.clothes-style'),
     clothesSlider.querySelector('.prev'),
     clothesSlider.querySelector('.next')
   );
-
   skinSlider.slider.addEventListener('click', (event) => {
     refreshSkin();
   });
@@ -254,6 +258,7 @@ window.addEventListener('DOMContentLoaded', () => {
     refreshClothes();
   });
 
+  //Functions
   function refreshSkin() {
     skinSlider.arrows();
     let count = skinSlider.slideIndex;
@@ -276,10 +281,13 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function refresh() {
+    skinSlider.slideIndex = 1;
     skinSlider.showSlider(1);
     refreshSkin();
+    hairSlider.slideIndex = 1;
     hairSlider.showSlider(1);
     refreshHair();
+    clothesSlider.slideIndex = 1;
     clothesSlider.showSlider(1);
     refreshClothes();
   }
@@ -289,6 +297,5 @@ window.addEventListener('DOMContentLoaded', () => {
     rand = Math.round(rand);
     return rand;
   }
-
   refresh();
 });
