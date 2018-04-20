@@ -183,31 +183,36 @@ window.addEventListener('DOMContentLoaded', () => {
         alert('Вы ввели некорректный возраст');
         return;
       } else {
-        custom.style.display = 'none';
-        main.style.display = 'block';
-        myCandidate = new Candidate(
-          nameCustom.value,
-          ageCustom.value + ' лет',
-          sex.value,
-          select.options[select.selectedIndex].value,
-          bio.value,
-          personSkin,
-          personHair,
-          personClothes);
+        let testExp = /^[А-ЯЁа-яё]+$/i;
+        if (testExp.test(nameCustom.value)) {
+          custom.style.display = 'none';
+          main.style.display = 'block';
+          myCandidate = new Candidate(
+            nameCustom.value,
+            ageCustom.value + ' лет',
+            sex.value,
+            select.options[select.selectedIndex].value,
+            bio.value,
+            personSkin,
+            personHair,
+            personClothes);
 
-        for (let i = 0; i < resultCount.length; i++) {
-          resultCount[i].textContent = '0%';
-          progressBar[i].style.height = '0';
-          mainCardsItem[i].classList.remove('main-cards-item-active');
+          for (let i = 0; i < resultCount.length; i++) {
+            resultCount[i].textContent = '0%';
+            progressBar[i].style.height = '0';
+            mainCardsItem[i].classList.remove('main-cards-item-active');
+          }
+          myCandidate.createCandidate();
+          let
+            mainPerson = document.querySelector('.candidate-block'),
+            tempNode = mainPerson.querySelector('.photo'),
+            customPerson = document.querySelectorAll('.person')[0].cloneNode(true);
+          mainPerson.removeChild(tempNode);
+          mainPerson.insertBefore(customPerson, mainPerson.querySelector('.result'));
+          mainPerson.querySelector('.person').style.marginRight = '25px';
+        } else {
+          alert('Имя должно состоять только из кириллицы');
         }
-        myCandidate.createCandidate();
-        let
-          mainPerson = document.querySelector('.candidate-block'),
-          tempNode = mainPerson.querySelector('.photo'),
-          customPerson = document.querySelectorAll('.person')[0].cloneNode(true);
-        mainPerson.removeChild(tempNode);
-        mainPerson.insertBefore(customPerson, mainPerson.querySelector('.result'));
-        mainPerson.querySelector('.person').style.marginRight = '25px';
       }
     }
 
@@ -222,7 +227,7 @@ window.addEventListener('DOMContentLoaded', () => {
     ageCustom.value = '';
     select.selectedIndex = 0;
     bio.value = '';
-    gender=1;
+    gender = 1;
     refresh();
     if (mainCardsItem.length > 2)
       mainCardsItem[0].parentNode.removeChild(mainCardsItem[0]);
