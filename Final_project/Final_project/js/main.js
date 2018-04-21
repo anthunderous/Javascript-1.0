@@ -109,12 +109,12 @@ window.addEventListener('DOMContentLoaded', () => {
     mainCardsItem = mainCards.querySelectorAll('.main-cards-item');
     resultCount = document.querySelectorAll('.result-count');
     progressBar = document.querySelectorAll('.progress-bar');
-    let random = getRandomInt(0, 100 - n),
+    let random = getRandomInt(1, 98 - n),
       result = 100;
     resultCount[0].textContent = random + n + '%';
     progressBar[0].style.height = random + n + '%';
     result -= (random + n);
-    random = getRandomInt(0, (100 - random - n));
+    random = getRandomInt(1, (99 - random - n));
     resultCount[1].textContent = random + '%';
     progressBar[1].style.height = random + '%';
     result -= random;
@@ -184,7 +184,7 @@ window.addEventListener('DOMContentLoaded', () => {
         return;
       } else {
         let testExp = /^[А-ЯЁа-яё]+$/i;
-        if (testExp.test(nameCustom.value)) {
+        if (testExp.test(nameCustom.value)&&(testExp.test(bio.value))) {
           custom.style.display = 'none';
           main.style.display = 'block';
           myCandidate = new Candidate(
@@ -211,7 +211,7 @@ window.addEventListener('DOMContentLoaded', () => {
           mainPerson.insertBefore(customPerson, mainPerson.querySelector('.result'));
           mainPerson.querySelector('.person').style.marginRight = '25px';
         } else {
-          alert('Имя должно состоять только из кириллицы');
+          alert('Поля должны состоять только из кириллицы');
         }
       }
     }
